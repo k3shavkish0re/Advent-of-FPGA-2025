@@ -50,3 +50,5 @@ s49(04Dec2025:02:52:25):  xrun -sv tb_puzzle1.sv design.sv
 s50(04Dec2025:02:55:10):  xrun -sv tb_puzzle1.sv design.sv 
 s51(04Dec2025:02:55:30):  xrun -sv tb_puzzle1.sv design.sv 
 s52(04Dec2025:02:58:33):  xrun -sv tb_puzzle1.sv design.sv 
+s53(04Dec2025:03:06:14):  xrun -sv tb_puzzle1.sv design.sv 
+s54(04Dec2025:03:07:47):  xrun -sv tb_puzzle1.sv design.sv 

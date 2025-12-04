@@ -21,8 +21,8 @@ logic [NUM_BANKS-1:0][3:0] max_battery_in_bank_q;	//max battery rating
 logic [NUM_BANKS-1:0][6:0] max_battery_index_in_bank_d;
 logic [NUM_BANKS-1:0][6:0] max_battery_index_in_bank_q;	//max battery rating index
 
-logic [NUM_BANKS-1:0][6:0] max_battery_in_bank_n2_d;
-logic [NUM_BANKS-1:0][6:0] max_battery_in_bank_n2_q;	//max battery rating till second last index
+logic [NUM_BANKS-1:0][3:0] max_battery_in_bank_n2_d;
+logic [NUM_BANKS-1:0][3:0] max_battery_in_bank_n2_q;	//max battery rating till second last index
 
 logic [NUM_BANKS-1:0][6:0] max_battery_in_bank_i1_n1_d;
 logic [NUM_BANKS-1:0][6:0] max_battery_in_bank_i1_n1_q;	//max battery rating till second last index
@@ -97,9 +97,35 @@ always_comb begin
     if (state_q == CALC) begin
         for (int j = 0; j < NUM_BANKS; j++) begin
             if (max_battery_index_in_bank_q[j] == 7'd99)
-                max_in_bank_d[j] = max_battery_in_bank_n2_q[j] * 10 + max_battery_in_bank_q[j];	//replace with LUT
+                //max_in_bank_d[j] = max_battery_in_bank_n2_q[j] * 10 + max_battery_in_bank_q[j];	//replace with LUT
+				case (max_battery_in_bank_n2_q[j])
+					4'd0: max_in_bank_d[j] =                max_battery_in_bank_q[j];
+					4'd1: max_in_bank_d[j] = 8'd10  +       max_battery_in_bank_q[j];
+					4'd2: max_in_bank_d[j] = 8'd20  +       max_battery_in_bank_q[j];
+					4'd3: max_in_bank_d[j] = 8'd30  +       max_battery_in_bank_q[j];
+					4'd4: max_in_bank_d[j] = 8'd40  +       max_battery_in_bank_q[j];
+					4'd5: max_in_bank_d[j] = 8'd50  +       max_battery_in_bank_q[j];
+					4'd6: max_in_bank_d[j] = 8'd60  +       max_battery_in_bank_q[j];
+					4'd7: max_in_bank_d[j] = 8'd70  +       max_battery_in_bank_q[j];
+					4'd8: max_in_bank_d[j] = 8'd80  +       max_battery_in_bank_q[j];
+					4'd9: max_in_bank_d[j] = 8'd90  +       max_battery_in_bank_q[j];
+					default: max_in_bank_d[j] = 8'd0;
+				endcase
             else
-                max_in_bank_d[j] = max_battery_in_bank_q[j] * 10 + max_battery_in_bank_i1_n1_q[j];
+                //max_in_bank_d[j] = max_battery_in_bank_q[j] * 10 + max_battery_in_bank_i1_n1_q[j];	//replace with LUT
+				case (max_battery_in_bank_q[j])
+					4'd0: max_in_bank_d[j] =                 max_battery_in_bank_i1_n1_q[j];
+					4'd1: max_in_bank_d[j] = 8'd10  +        max_battery_in_bank_i1_n1_q[j];
+					4'd2: max_in_bank_d[j] = 8'd20  +        max_battery_in_bank_i1_n1_q[j];
+					4'd3: max_in_bank_d[j] = 8'd30  +        max_battery_in_bank_i1_n1_q[j];
+					4'd4: max_in_bank_d[j] = 8'd40  +        max_battery_in_bank_i1_n1_q[j];
+					4'd5: max_in_bank_d[j] = 8'd50  +        max_battery_in_bank_i1_n1_q[j];
+					4'd6: max_in_bank_d[j] = 8'd60  +        max_battery_in_bank_i1_n1_q[j];
+					4'd7: max_in_bank_d[j] = 8'd70  +        max_battery_in_bank_i1_n1_q[j];
+					4'd8: max_in_bank_d[j] = 8'd80  +        max_battery_in_bank_i1_n1_q[j];
+					4'd9: max_in_bank_d[j] = 8'd90  +        max_battery_in_bank_i1_n1_q[j];
+				default: max_in_bank_d[j] = 8'd0;
+			endcase
         end
     end
 end

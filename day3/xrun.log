@@ -1,15 +1,12 @@
 xrun: 22.03-s012: (c) Copyright 1995-2023 Cadence Design Systems, Inc.
-TOOL:	xrun	22.03-s012: Started on Dec 04, 2025 at 02:58:33 CST
+TOOL:	xrun	22.03-s012: Started on Dec 04, 2025 at 03:07:47 CST
 xrun
 	-sv
 	tb_puzzle1.sv
 	design.sv
 Recompiling... reason: file './design.sv' is newer than expected.
-	expected: Thu Dec  4 02:55:28 2025
-	actual:   Thu Dec  4 02:57:30 2025
-file: tb_puzzle1.sv
-	module worklib.tb_puzzle1:sv
-		errors: 0, warnings: 0
+	expected: Thu Dec  4 03:05:59 2025
+	actual:   Thu Dec  4 03:07:44 2025
 file: design.sv
 	module worklib.puzzle1:sv
 		errors: 0, warnings: 0
@@ -20,10 +17,10 @@ file: design.sv
 xmelab: *W,DSEMEL: This SystemVerilog design will be simulated as per IEEE 1800-2009 SystemVerilog simulation semantics. Use -disable_sem2009 option for turning off SV 2009 simulation semantics.
 	Building instance overlay tables: .................... Done
 	Generating native compiled code:
-		worklib.tb_puzzle1:sv <0x6a8692d5>
+		worklib.tb_puzzle1:sv <0x4572a001>
 			streams:  10, words: 81332
-		worklib.puzzle1:sv <0x0a0d528d>
-			streams:  13, words: 19888
+		worklib.puzzle1:sv <0x464f9e15>
+			streams:  13, words: 21893
 	Building instance specific data structures.
 	Loading native compiled code:     .................... Done
 	Design hierarchy summary:
@@ -4475,4 +4472,4 @@ Bank[199]: max=88
 Simulation complete via $finish(1) at time 21115 NS + 0
 ./tb_puzzle1.sv:292         $finish;
 xcelium> exit
-TOOL:	xrun	22.03-s012: Exiting on Dec 04, 2025 at 02:58:36 CST  (total: 00:00:03)
+TOOL:	xrun	22.03-s012: Exiting on Dec 04, 2025 at 03:07:49 CST  (total: 00:00:02)
