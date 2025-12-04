@@ -1,0 +1,25 @@
+$date
+    Dec  4, 2025  00:23:22
+$end
+$version
+    TOOL:	xmsim	22.03-s012
+$end
+$timescale
+    1 ns
+$end
+
+$scope module tb_puzzle1 $end
+
+$scope module dut $end
+$var parameter 32 !    NUM_BANKS $end
+$var parameter 32 "    SIZE_BANK $end
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+$dumpvars
+b10000000 "
+b11001000 !
+$end
+#51245

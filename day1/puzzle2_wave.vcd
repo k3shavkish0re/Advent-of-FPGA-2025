@@ -1,0 +1,23 @@
+$date
+    Dec  3, 2025  02:21:08
+$end
+$version
+    TOOL:	xmsim	22.03-s012
+$end
+$timescale
+    1 ns
+$end
+
+$scope module tb_puzzle2 $end
+
+$scope module dut $end
+$var parameter 32 !    PWD_SIZE $end
+$upscope $end
+
+$upscope $end
+
+$enddefinitions $end
+$dumpvars
+b1111 !
+$end
+#86735
