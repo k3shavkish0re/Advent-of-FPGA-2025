@@ -287,7 +287,7 @@ module tb_puzzle1;
         bank_en = 0;
         val = '0;
 
-        repeat (2000) @(posedge clk);
+        repeat (500) @(posedge clk);
 
         $finish;
     end
