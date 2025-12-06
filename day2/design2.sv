@@ -1,6 +1,6 @@
-module puzzle1 #(
+module puzzle2 #(
 	parameter MAX_LENGTH = 10,	//In the input largest number has 10 digits
-	parameter SUM_SIZE = 50,		//Large sum size value in binary. used to store the maximum sum in binary notation. largest input value is 33 bit binary long and there are 30 ranges. so need atleast 38 binary bits
+	parameter SUM_SIZE = 64,		//Large sum size value in binary. used to store the maximum sum in binary notation. largest input value is 33 bit binary long and there are 30 ranges. so need atleast 38 binary bits
 	//parameter CNT_SIZE = 64,		//Large cnt size value. largest possible value of cnt is high
 	parameter NUM_RANGES = 30
 )(
@@ -111,11 +111,43 @@ always_comb begin
 end
 
 
+
+logic [NUM_RANGES-1:0][3:0] d1;
+logic [NUM_RANGES-1:0][3:0] d2;
+logic [NUM_RANGES-1:0][3:0] d3;
+logic [NUM_RANGES-1:0][3:0] d4;
+logic [NUM_RANGES-1:0][3:0] d5;
+logic [NUM_RANGES-1:0][3:0] d6;
+logic [NUM_RANGES-1:0][3:0] d7;
+logic [NUM_RANGES-1:0][3:0] d8;
+logic [NUM_RANGES-1:0][3:0] d9;
+logic [NUM_RANGES-1:0][3:0] d10;
+
+logic [NUM_RANGES-1:0] temp;
+logic [NUM_RANGES-1:0] temp2;
+
+
+always_comb begin
+	for(int k=0;k<NUM_RANGES;k++) begin
+		d1[k] = num_q[k][0  +: 4];
+		d2[k] = num_q[k][4  +: 4];
+		d3[k] = num_q[k][8  +: 4];
+		d4[k] = num_q[k][12 +: 4];
+		d5[k] = num_q[k][16 +: 4];
+		d6[k] = num_q[k][20  +: 4];
+		d7[k] = num_q[k][24  +: 4];
+		d8[k] = num_q[k][28  +: 4];
+		d9[k] = num_q[k][32 +: 4];
+		d10[k] = num_q[k][36 +: 4];
+		temp[k] = (({d9[k],d8[k],d7[k]} == {d6[k],d5[k],d4[k]}) && ({d6[k],d5[k],d4[k]} == {d3[k],d2[k],d1[k]}));
+	end
+end
+
+
+
 //flag generation of when to add, keep it purely combinational
 always_comb begin
 	for(int k=0;k<NUM_RANGES;k++) begin
-		if(num_vld_digit[k][0] || (num_q[k] == 40'b0)) invalid_id[k] = 1'b1;	//if odd number of decimal digits or value is 0, don't add
-		else begin
 			case(num_vld_digit[k])			//slicing index must be constant
 				4'd0: invalid_id[k] = 1'b1;		
 				4'd1: invalid_id[k] = 1'b1;
@@ -123,29 +155,40 @@ always_comb begin
 					if(num_q[k][0+:4] == num_q[k][4+:4]) invalid_id[k] = 1'b0;
 					else invalid_id[k] = 1'b1;
 				end
-				4'd3: invalid_id[k] = 1'b1;
+				4'd3: begin
+					if((d3[k] == d2[k]) && (d2[k] == d1[k])) invalid_id[k] = 1'b0;
+					else invalid_id[k] = 1'b1;
+				end
 				4'd4: begin
 					if(num_q[k][0+:8] == num_q[k][8+:8]) invalid_id[k] = 1'b0;
 					else invalid_id[k] = 1'b1;
 				end
-				4'd5: invalid_id[k] = 1'b1;
+				4'd5: begin
+					if((d1[k] == d2[k]) && (d2[k] == d3[k]) && (d3[k] == d4[k]) && (d4[k] == d5[k])) invalid_id[k] = 1'b0;
+					else invalid_id[k] = 1'b1;
+				end
 				4'd6: begin
-					if(num_q[k][0+:12] == num_q[k][12+:12]) invalid_id[k] = 1'b0;
+					if((num_q[k][0+:12] == num_q[k][12+:12]) || (({d6[k],d5[k]} == {d4[k], d3[k]}) && ({d4[k],d3[k]} == {d2[k],d1[k]}))) invalid_id[k] = 1'b0;
 					else invalid_id[k] = 1'b1;
 				end
-				4'd7: invalid_id[k] = 1'b1;
+				4'd7: begin
+					if((d1[k] == d2[k]) && (d2[k] == d3[k]) && (d3[k] == d4[k]) && (d4[k] == d5[k]) && (d5[k] == d6[k]) && (d6[k] == d7[k])) invalid_id[k] = 1'b0;
+					else invalid_id[k] = 1'b1;
+				end
 				4'd8: begin
-					if(num_q[k][0+:16] == num_q[k][16+:16]) invalid_id[k] = 1'b0;
+					if((num_q[k][0+:16] == num_q[k][16+:16]) || (({d8[k],d7[k]} == {d6[k], d5[k]}) && ({d6[k],d5[k]} == {d4[k], d3[k]}) && ({d4[k],d3[k]} == {d2[k],d1[k]}))) invalid_id[k] = 1'b0;
 					else invalid_id[k] = 1'b1;
 				end
-				4'd9: invalid_id[k] = 1'b1;
+				4'd9: begin
+					if (temp[k]) invalid_id[k] = 1'b0;
+					else invalid_id[k] = 1'b1;
+				end
 				4'd10: begin
-					if(num_q[k][0+:20] == num_q[k][20+:20]) invalid_id[k] = 1'b0;
+					if((num_q[k][0+:20] == num_q[k][20+:20]) || (({d10[k],d9[k]} == {d8[k], d7[k]}) && ({d8[k],d7[k]} == {d6[k], d5[k]}) && ({d6[k],d5[k]} == {d4[k], d3[k]}) && ({d4[k],d3[k]} == {d2[k],d1[k]}))) invalid_id[k] = 1'b0;
 					else invalid_id[k] = 1'b1;
 				end
 				default invalid_id[k] = 1'b1;
 			endcase
-		end
 	end
 end
 
