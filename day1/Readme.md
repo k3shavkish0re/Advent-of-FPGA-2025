@@ -1,7 +1,7 @@
 # HDL Puzzle Project
 
 ## Overview
-This project involves designing and testing hardware description language (HDL) modules for two puzzle challenges. The DUTs (Design Under Test) are implemented in SystemVerilog, and testbenches are generated with the help of AI to handle input processing efficiently.
+This folder contains solutions for day1 Jane Street Puzzle.
 
 ---
 
@@ -20,6 +20,5 @@ HDL simulations were performed using **Cadence Xcelium**.
 ### Simulation Command
 ```bash
 xrun -sv <testbench file name> <DUT file name>
-
 
 xrun -sv Generated_tb_puzzle2.sv design2.sv
