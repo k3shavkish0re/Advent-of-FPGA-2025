@@ -17,7 +17,7 @@ All HDL simulations were executed using **Cadence Xcelium**.
 
 ### Simulation Command
 
-xrun -sv <testbench file name> <DUT file name>
+xrun -sv &lt;testbench file name&gt; &lt;DUT file name&gt;
 
 ### Example
 
