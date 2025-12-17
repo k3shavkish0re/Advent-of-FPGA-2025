@@ -36,12 +36,6 @@ A xrun.log file is generated which can be used to observe outputs. I have includ
 
 ---
 
-## DUT Block Diagram
-
-![DUT Block Diagram](path/to/dut_block_diagram.png)
-
----
-
 ## Use of AI
 
 **AI was not used** for designing the DUT. However, the given inputs were not directly suitable for HDL and required significant processing to generate meaningful test cases. AI was used to reduce the overall time required to test the DUT. This is especially helpful since the puzzles are more friendly to high-level programming languages, and direct HDL implementation would require considerably more effort.
