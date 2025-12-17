@@ -1,5 +1,5 @@
 # Day3
-Solutions for Jane Street Day1 Puzzle.
+Solution for Jane Street Day3 Puzzle.
 
 ## Directory Structure
 
