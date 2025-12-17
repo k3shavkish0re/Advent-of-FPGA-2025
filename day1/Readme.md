@@ -21,4 +21,8 @@ HDL simulations were performed using **Cadence Xcelium**.
 ```bash
 xrun -sv <testbench file name> <DUT file name>
 
-xrun -sv Generated_tb_puzzle2.sv design2.sv
+
+```bash
+xrun -sv <testbench file name> <DUT file name>
+
+
