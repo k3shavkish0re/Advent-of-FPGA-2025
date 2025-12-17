@@ -21,7 +21,7 @@ xrun -sv &lt;testbench file name&gt; &lt;DUT file name&gt;
 
 ### Example
 
-xrun -sv Generated_tb_puzzle2.sv design2.sv
+xrun -sv generated_tb_puzzle2.sv design2.sv
 
 ### Output
 
