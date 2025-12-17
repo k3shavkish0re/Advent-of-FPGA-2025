@@ -23,6 +23,10 @@ xrun -sv &lt;testbench file name&gt; &lt;DUT file name&gt;
 
 xrun -sv Generated_tb_puzzle2.sv design2.sv
 
+### Output
+
+A xrun.log file is generated which can be used to observe outputs. I have include $monitor statements in the testbench to monitor the DUT outputs and internal signals.
+
 
 ---
 
