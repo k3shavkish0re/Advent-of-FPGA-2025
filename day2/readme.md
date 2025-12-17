@@ -1,4 +1,4 @@
-# Day1
+# Day2
 Solutions for Jane Street Day1 Puzzle.
 
 ## Directory Structure
