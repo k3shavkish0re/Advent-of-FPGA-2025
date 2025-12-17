@@ -17,12 +17,12 @@ Similar to Day 2, the DUT assumes that the joltage ratings of all banks can be t
 
 Find largest rating in bank & index:
 
-if largest_index == n-1:
-    Find largest in bank from 0 to n-2
-    output = (largest in bank from 0 to n-2 * 10) + largest rating in bank
-else:
-    Find largest in largest_index+1 to n-1
-    output = (largest rating in bank * 10) + (largest in largest_index+1 to n-1)
+if largest_index == n-1:    
+    Find largest in bank from 0 to n-2   
+    output = (largest in bank from 0 to n-2 * 10) + largest rating in bank   
+else:    
+    Find largest in largest_index+1 to n-1   
+    output = (largest rating in bank * 10) + (largest in largest_index+1 to n-1)   
  
 
 
