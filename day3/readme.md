@@ -15,7 +15,7 @@ Similar to Day 2, the DUT assumes that the joltage ratings of all banks can be t
 
 ## Pseudo logic
 
-Find largest rating in bank & index:
+    Find largest rating in bank & index:
     
     if largest_index == n-1:    
         Find largest in bank from 0 to n-2   
