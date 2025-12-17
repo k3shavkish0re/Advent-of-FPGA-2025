@@ -1,4 +1,5 @@
-# HDL Puzzle Simulation Project
+# Day1
+Solutions for Jane Street Day1 Puzzle.
 
 ## Directory Structure
 
@@ -18,13 +19,10 @@ All HDL simulations were executed using **Cadence Xcelium**.
 
 xrun -sv <testbench file name> <DUT file name>
 
-text
-
 ### Example
 
 xrun -sv Generated_tb_puzzle2.sv design2.sv
 
-text
 
 ---
 
@@ -36,7 +34,4 @@ text
 
 ## Use of AI
 
-- **AI was not used** for the Design Under Test (DUT).  
-- The provided inputs were not directly compatible with HDL simulation and required significant processing.  
-- **AI assistance** was utilized to transform and structure the inputs efficiently into a usable testbench format.  
-- This approach saved development time, especially since the problems were more suited to high-level language manipulation than direct HDL implementation.
+**AI was not used** for designing the DUT. However, the given inputs were not directly suitable for HDL and required significant processing to generate meaningful test cases. AI was used to reduce the overall time required to test the DUT. This is especially helpful since the puzzles are more friendly to high-level programming languages, and direct HDL implementation would require considerably more effort.
