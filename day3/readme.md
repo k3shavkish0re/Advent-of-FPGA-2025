@@ -9,6 +9,24 @@ Solutions for Jane Street Day1 Puzzle.
 
 ---
 
+## DUT Summary
+
+Similar to Day 2, the DUT assumes that the joltage ratings of all banks can be transmitted simultaneously. This parallelism reduces processing time at the cost of additional hardware. The DUT also operates in three states: INIT, STORE, and CALC, corresponding to initialization, storing the joltage ratings, and performing calculations, respectively.
+
+## Pseudo logic
+
+Find largest rating in bank & index:
+  if largest_index == n-1:
+    Find largest in bank from 0 to n-2
+    output = (largest in bank from 0 to n-2 * 10) + largest rating in bank
+  else
+    find largest in largest_index+1 to n-1
+    output = largest rating in bank * 10 + (largest in largest_index+1 to n-1)
+ 
+
+
+---
+
 ## Simulation Environment
 
 All HDL simulations were executed using **Cadence Xcelium**.
@@ -25,12 +43,6 @@ xrun -sv tb_puzzle1.sv design.sv
 
 A xrun.log file is generated which can be used to observe outputs. I have included $monitor statements in the testbench to monitor the DUT outputs and internal signals.
 
-
----
-
-## DUT Block Diagram
-
-![DUT Block Diagram](path/to/dut_block_diagram.png)
 
 ---
 
